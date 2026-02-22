@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImageFap Downloader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>ImageFap Downloader</h1>
+            <p class="subtitle">Download galleries from ImageFap with ease</p>
+        </header>
+
+        <main>
+            <div class="card">
+                <h2>Download Settings</h2>
+                
+                <div class="form-group">
+                    <label for="galleryUrl">Gallery URL *</label>
+                    <input 
+                        type="text" 
+                        id="galleryUrl" 
+                        placeholder="https://www.imagefap.com/pictures/..." 
+                        required
+                    >
+                    <small>Enter the gallery, folder, or user URL from ImageFap</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="downloadPath">Download Folder (Absolute Path) *</label>
+                    <div class="path-input-group">
+                        <input 
+                            type="text" 
+                            id="downloadPath" 
+                            placeholder="Loading default path..." 
+                            required
+                        >
+                        <button type="button" id="browseBtn" class="btn-secondary" title="Change folder path (validates path)">✏️ Browse</button>
+                    </div>
+                    <small>💡 Path will be validated automatically. Must be absolute (e.g., /Users/name/Downloads/imagefap)</small>
+                </div>
+
+                <details class="advanced-options">
+                    <summary>Advanced Options</summary>
+                    <div class="options-grid">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="overwrite">
+                            <span>Overwrite existing files</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="seqFilenames">
+                            <span>Sequential filenames</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="fullFilenames">
+                            <span>Full filenames</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="saveJSON" checked>
+                            <span>Save gallery info (JSON)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="saveHTML">
+                            <span>Save HTML pages</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Directory Structure</label>
+                        <div class="options-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="dirUser" checked>
+                                <span>Include user folder</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="dirFavorites" checked>
+                                <span>Include favorites folder</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="dirFolder" checked>
+                                <span>Include gallery folder</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="dirGallery" checked>
+                                <span>Include gallery name</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxConcurrent">Max Concurrent Downloads</label>
+                        <input type="number" id="maxConcurrent" value="10" min="1" max="50">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="maxRetries">Max Retries</label>
+                        <input type="number" id="maxRetries" value="3" min="0" max="10">
+                    </div>
+                </details>
+
+                <div class="button-group">
+                    <button type="button" id="startBtn" class="btn-primary">Start Download</button>
+                    <button type="button" id="cancelBtn" class="btn-danger" disabled>Cancel</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Progress</h2>
+                
+                <div class="progress-section">
+                    <div class="progress-bar-container">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                    <div id="progressText" class="progress-text">Ready to download</div>
+                </div>
+
+                <div class="log-section">
+                    <div class="log-header">
+                        <h3>Activity Log</h3>
+                        <button type="button" id="clearLogBtn" class="btn-small">Clear</button>
+                    </div>
+                    <div id="logContainer" class="log-container"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>ImageFap Downloader Web GUI | Based on imagefap-dl by Patrick Kan</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
