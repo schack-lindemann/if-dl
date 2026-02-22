@@ -129,7 +129,7 @@ If the activity log shows connection errors:
 
 ## Command Line Interface
 
-The original CLI is still available. See the main README.md for CLI usage instructions.
+The original CLI is still available.
 
 ## License
 
